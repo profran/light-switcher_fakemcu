@@ -14,11 +14,10 @@ client.on('message', function (topic, message) {
   if (topic.toString() === '1234' && message.toString() !== 'error') {
     console.log('   Changing state...')
     on = message.toString() === '1'
-    client.publish('1234/state', on ? 'On' : 'Off')
   }
   console.log(`   State: ${on}`)
 })
 
 setInterval(() => {
-  client.publish('1234/state', on ? '1' : '0')
+  client.publish('1234', on ? '1' : '0')
 }, 1000)
